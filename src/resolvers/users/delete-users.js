@@ -1,6 +1,14 @@
-export const deleteUser = (req, res) => {
-  const deleteUser = req.body;
-  users = users.filter((user) => user.id !== deleteUser.id);
+import { userModel } from "../../model/user-model.js";
 
-  res.send("user deleted successfully");
+export const deleteUser = async (req, res) => {
+  try {
+    const User = await userModel.findByIdAndDelete(req.body.id, {
+      name: req.body.name,
+      email: req.body.email,
+      phone: req.body.phone,
+    });
+    res.status(200).json(User);
+  } catch (error) {
+    res.status(400).json(error);
+  }
 };

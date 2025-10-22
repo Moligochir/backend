@@ -1,11 +1,17 @@
 import express from "express";
 import mongoose from "mongoose";
 import { userRouter } from "./routes/users.js";
+import { router } from "./routes/foods.js";
+import { foodCategoryRouter } from "./routes/food-category.js";
+import { foodOrderRouter } from "./routes/food-order.js";
 const app = express();
 const PORT = 8000;
 
 app.use(express.json());
 app.use("/users", userRouter);
+app.use("/foods", router);
+app.use("/food-category", foodCategoryRouter);
+app.use("/food-order", foodOrderRouter);
 
 mongoose
   .connect(
