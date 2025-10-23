@@ -8,7 +8,7 @@ const userSchema = new Schema({
   email: { type: String },
   phoneNumber: { type: String },
   address: { type: String },
-  role: { type: String },
+  role: { type: String, enum: ["USER", "ADMIN"] },
   orderedFoods: { type: String },
   ttl: { type: Date },
   isVerified: { type: String },
