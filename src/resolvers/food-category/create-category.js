@@ -4,9 +4,7 @@ export const createFoodCategory = async (req, res) => {
   const data = req.body;
   try {
     const FoodCategory = await foodCategoryModel.create({
-      name: data.name,
-      email: data.email,
-      phone: data.phone,
+      categoryName: data.categoryName,
     });
     res.status(200).json(FoodCategory);
   } catch (error) {

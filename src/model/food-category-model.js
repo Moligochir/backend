@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 const foodCategorySchema = new Schema({
   id: { type: ObjectId },
-  name: { type: String, require: true },
-  email: { type: String, require: true },
-  phone: { type: Number, require: true },
+  categoryName: { type: String },
+  createdAt: { type: Date, required: true, default: Date.now },
+  updatedAt: { type: Date, required: true, default: Date.now },
 });
 export const foodCategoryModel = mongoose.model(
   "food-category",

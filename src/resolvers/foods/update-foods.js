@@ -1,11 +1,14 @@
 import { foodModel } from "../../model/food-model.js";
 
 export const updateFood = async (req, res) => {
+  const data = req.body;
   try {
     const Food = await foodModel.findByIdAndUpdate(req.body.id, {
-      name: req.body.name,
-      email: req.body.email,
-      phone: req.body.phone,
+      foodName: data.foodName,
+      price: data.price,
+      image: data.image,
+      ingredients: data.ingredients,
+      category: data.category,
     });
     res.status(200).json(Food);
   } catch (error) {

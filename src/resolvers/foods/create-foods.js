@@ -4,9 +4,11 @@ export const createFood = async (req, res) => {
   const data = req.body;
   try {
     const newFood = await foodModel.create({
-      name: data.name,
-      email: data.email,
-      phone: data.phone,
+      foodName: data.foodName,
+      price: data.price,
+      image: data.image,
+      ingredients: data.ingredients,
+      category: data.category,
     });
     res.status(200).json(newFood);
   } catch (error) {
