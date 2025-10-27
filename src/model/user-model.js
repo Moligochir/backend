@@ -6,6 +6,7 @@ const ObjectId = Schema.ObjectId;
 const userSchema = new Schema({
   id: { type: ObjectId },
   email: { type: String },
+  password: { type: String },
   phoneNumber: { type: String },
   address: { type: String },
   role: { enum: ["USER", "ADMIN"] },
