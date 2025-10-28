@@ -1,8 +1,17 @@
 import { foodModel } from "../../model/food-model.js";
+import jwt from "jsonwebtoken";
 
 export const createFood = async (req, res) => {
   const data = req.body;
+  const token = req.headers.authorization;
+
   try {
+    const tokenData = await jwt.verify(token, "secret-key");
+    console.log(tokenData);
+
+    if (tokenData.role !== "ADMIN") {
+      return res.status(400).send("Permission not sufficient");
+    }
     const newFood = await foodModel.create({
       foodName: data.foodName,
       price: data.price,
@@ -10,8 +19,8 @@ export const createFood = async (req, res) => {
       ingredients: data.ingredients,
       category: data.category,
     });
-    res.status(200).json(newFood);
+    return res.status(200).json(newFood);
   } catch (error) {
-    res.status(400).json(error);
+    res.status(401).send("Unauthorization");
   }
 };

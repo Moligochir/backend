@@ -9,7 +9,7 @@ const userSchema = new Schema({
   password: { type: String },
   phoneNumber: { type: String },
   address: { type: String },
-  role: { enum: ["USER", "ADMIN"] },
+  role: { type: String, enum: ["USER", "ADMIN"] },
   orderedFoods: { type: Schema.ObjectId, require: true, ref: "food-order" },
   ttl: { type: Date },
   isVerified: { type: String },
